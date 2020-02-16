@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <div class="pageCenterAlign container-md" >
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <input type="text" class="form-control border-curve" name="ticker" required maxlength="6" ngModel placeholder="Ticker Here">
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-primary form-control border-curve" [disabled]="!searchForm.valid" type="submit">Find</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<router-outlet></router-outlet>
