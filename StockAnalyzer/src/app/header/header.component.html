@@ -2,15 +2,13 @@
     <div class="row width-100">
         <div class="col-md-4">
             <a class="navbar-brand" href="#">Stock Analyzer</a>
-            <button class="navbar-toggler" type="button">
-              <span class="navbar-toggler-icon"></span>
-            </button>
         </div>
         <div class="col-md-8">
-            <div *ngIf="stockInfoPageShown" class="collapse navbar-collapse">
-                <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0 float-md-right" type="submit">Search</button>
+          
+            <div *ngIf="stockInfoPageShown">
+                <form class="form-inline input-group">
+                  <input class="form-control search-field-right-space" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
         </div>
