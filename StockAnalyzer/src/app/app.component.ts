@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'StockAnalyzer';
-  navSearch:boolean = false;
-
-  updateNavSearch(searchEnabled:boolean){
-    this.navSearch = searchEnabled;
-    console.log(searchEnabled);
-  }
-
 }

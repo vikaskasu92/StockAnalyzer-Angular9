@@ -7,7 +7,7 @@ import { ActivatedRoute, Params } from '@angular/router';
     selector: 'app-header',
     templateUrl:'./header.component.html',
     styleUrls:['./header.component.css'],
-    providers:[StockAnalyzerService]
+    providers:[]
 })
 export class Header implements OnInit, OnDestroy{
 
