@@ -11,13 +11,19 @@ import { MainSearch } from './mainSearch/mainSearch.component';
 import { StockInfo } from './stockInfo/stockInfo.component';
 import { Header } from './header/header.component';
 import { StockAnalyzerService } from './stockAnalyzer.service';
+import { StockNews } from './stockInfo/stockNews/stockNews.component';
+import { RecentStocks } from './recentStocks/recentStock.component';
+import { StockExchange } from './recentStocks/stockExchange/stockExchange.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Header,
     MainSearch,
-    StockInfo
+    StockInfo,
+    StockNews,
+    RecentStocks,
+    StockExchange
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,15 @@
     <p>The Ticker to be searched is " {{ currentTicker | uppercase }} "</p>
     <hr>
     <hr>
-    <div style="display: block">
-        <canvas id="canvas">{{ chart }}</canvas>
+    <div class="row stock-graph-size">
+        <div class="col-md-12" style="display: block">
+            <canvas id="canvas">{{ chart }}</canvas>
+        </div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <app-stockNews></app-stockNews>
+        </div>
+    </div>    
 </span>
