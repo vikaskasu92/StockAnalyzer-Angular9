@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-    selector:'app-recentStock',
-    templateUrl:'./recentStock.component.html',
-    styleUrls:['./recentStock.component.css']
+    selector:'app-stockExchange',
+    templateUrl:'./stockExchange.component.html',
+    styleUrls:['./stockExchange.component.css']
 })
-export class RecentStocks{
+export class StockExchange implements OnInit{
 
     stockInfoPageShown:boolean = false;
     

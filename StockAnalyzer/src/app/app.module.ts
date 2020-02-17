@@ -12,8 +12,8 @@ import { StockInfo } from './stockInfo/stockInfo.component';
 import { Header } from './header/header.component';
 import { StockAnalyzerService } from './stockAnalyzer.service';
 import { StockNews } from './stockInfo/stockNews/stockNews.component';
-import { RecentStocks } from './recentStocks/recentStock.component';
-import { StockExchange } from './recentStocks/stockExchange/stockExchange.component';
+import { RecentStocks } from './stockExchange/recentStocks/recentStock.component';
+import { StockExchange } from './stockExchange/stockExchange.component';
 
 @NgModule({
   declarations: [
