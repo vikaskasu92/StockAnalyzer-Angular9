@@ -1,4 +1,4 @@
 .stock-graph-size{
     max-height: 500px;
-    max-width: 300px;
+    min-width: 300px;
 }

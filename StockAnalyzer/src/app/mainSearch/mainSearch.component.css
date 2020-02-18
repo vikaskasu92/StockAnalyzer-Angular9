@@ -4,5 +4,14 @@
 }
 
 .border-curve{
-    border-radius: 10px;
+    border-radius: 8px;
+}
+
+.removeRightBorderSettingsFromBootstrap{
+    border-top-right-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+}
+
+.leftSpacing{
+    margin-left: 10px;
 }

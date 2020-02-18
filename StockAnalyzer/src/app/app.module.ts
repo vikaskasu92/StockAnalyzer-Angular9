@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 
+import { HttpClientModule } from '@angular/common/http'
+
 import { AppRoutingModule } from './approuting.module'
 
 import { ChartsModule } from 'ng2-charts';
@@ -29,7 +31,8 @@ import { StockExchange } from './stockExchange/stockExchange.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
   ],
   providers: [StockAnalyzerService],
   bootstrap: [AppComponent]
