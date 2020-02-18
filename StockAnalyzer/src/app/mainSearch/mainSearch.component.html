@@ -3,6 +3,26 @@
         <div class="row form-inline">
             <div class="input-group col-md-12">
                 <input type="text" class="form-control border-curve removeRightBorderSettingsFromBootstrap" name="ticker" required maxlength="6" ngModel placeholder="Ticker Here">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle leftSpacing">
+                      Time Period
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" value='TIME_SERIES_INTRADAY_1'>1 Day</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" value='TIME_SERIES_INTRADAY_5'>5 Day</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" value='TIME_SERIES_DAILY_1'>1 Month</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" value='TIME_SERIES_DAILY_3'>3 Months</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" value='TIME_SERIES_DAILY_3'>6 Months</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" value='TIME_SERIES_DAILY'>1 year</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" value='TIME_SERIES_DAILY'>5 year</a>
+                    </div>
+                </div>
                 <div class="">
                     <button class="btn btn-outline-primary form-control border-curve leftSpacing" [disabled]="!searchForm.valid" type="submit"> Search </button>
                 </div>
