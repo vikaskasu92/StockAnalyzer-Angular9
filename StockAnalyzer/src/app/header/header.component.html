@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="row width-100">
-        <div class="col-md-8">
-            <a class="navbar-brand" href="#">Stock Analyzer</a>
+        <div class="col-md-7">
+            <a class="navbar-brand" routerLink='/searchTicker'>Stock Analyzer</a>
         </div>
-        <div class="col-md-4">
-          
+        <div class="col-md-5">
             <div *ngIf="stockInfoPageShown">
                 <form class="form-inline input-group">
                   <input class="form-control search-field-right-space" type="search" placeholder="Search Ticker" aria-label="Search">
