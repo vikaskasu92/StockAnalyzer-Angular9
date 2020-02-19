@@ -1,14 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params, QueryParamsHandling } from '@angular/router';
+import { ActivatedRoute, Params} from '@angular/router';
 import { Chart } from 'chart.js';
-import { StockAnalyzerService } from '../stockAnalyzer.service';
+import { StockAnalyzerService } from '../services/stockAnalyzer.service';
 import { HttpClient } from '@angular/common/http';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     templateUrl:"./stockInfo.component.html",
     styleUrls:["./stockInfo.component.css"],
-    providers: [StockAnalyzerService]
+    providers:[StockAnalyzerService]
 })
 export class StockInfo implements OnInit{
     

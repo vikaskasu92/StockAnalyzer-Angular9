@@ -1,6 +1,4 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { StockAnalyzerService } from '../stockAnalyzer.service';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({

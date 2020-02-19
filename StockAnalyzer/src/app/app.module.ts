@@ -12,10 +12,12 @@ import { AppComponent } from './app.component';
 import { MainSearch } from './mainSearch/mainSearch.component';
 import { StockInfo } from './stockInfo/stockInfo.component';
 import { Header } from './header/header.component';
-import { StockAnalyzerService } from './stockAnalyzer.service';
+import { StockAnalyzerService } from './services/stockAnalyzer.service';
 import { StockNews } from './stockInfo/stockNews/stockNews.component';
 import { RecentStocks } from './stockExchange/recentStocks/recentStock.component';
 import { StockExchange } from './stockExchange/stockExchange.component';
+import { Error } from './error/error.component'
+import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { StockExchange } from './stockExchange/stockExchange.component';
     StockInfo,
     StockNews,
     RecentStocks,
-    StockExchange
+    StockExchange,
+    Error,
+    InvalidTicker
   ],
   imports: [
     BrowserModule,

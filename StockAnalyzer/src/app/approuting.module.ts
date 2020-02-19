@@ -3,11 +3,20 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { MainSearch } from './mainSearch/mainSearch.component';
 import { StockInfo } from './stockInfo/stockInfo.component';
+import { Error } from './error/error.component'
+import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
 
 
 const appRoutes:Routes = [
+    { path:"", component:MainSearch, pathMatch:'full' },
     { path:"searchTicker", component:MainSearch },
-    { path:"stockInfo", component:StockInfo }
+    { path:"stockInfo", component:StockInfo },
+    { path:"error", component:Error ,children:
+      [
+        { path:"invalidTicker",component:InvalidTicker }
+      ]
+    },
+    { path:"**", component:StockInfo }
 ]
 
 @NgModule({
