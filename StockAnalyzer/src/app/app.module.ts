@@ -18,6 +18,7 @@ import { RecentStocks } from './stockExchange/recentStocks/recentStock.component
 import { StockExchange } from './stockExchange/stockExchange.component';
 import { Error } from './error/error.component'
 import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
+import { DropDownToggle } from './directives/dropDownToggle.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
     RecentStocks,
     StockExchange,
     Error,
-    InvalidTicker
+    InvalidTicker,
+    DropDownToggle   
+
   ],
   imports: [
     BrowserModule,

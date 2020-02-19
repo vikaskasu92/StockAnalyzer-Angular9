@@ -15,10 +15,10 @@ export class MainSearch implements OnInit{
      constructor(private route:ActivatedRoute, private router:Router){ }
 
      ngOnInit(){
-        //console.log(this.searchForm);
      }
 
      onSubmit(){ 
+       console.log(this.searchForm);
        this.router.navigate(['/stockInfo'],{queryParams:{'ticker':this.searchForm.controls['ticker'].value,'stockInfoPageShown':this.stockInfoPageShown}});
     }
 
