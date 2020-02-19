@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class StockInfo implements OnInit{
     
     currentTicker:string = '';
+    timeSeries:string = "";
 
     constructor(private router:ActivatedRoute, private stockAnalyzerService:StockAnalyzerService,private http:HttpClient){}
 
@@ -20,13 +21,14 @@ export class StockInfo implements OnInit{
     ngOnInit(){
         this.router.queryParams.subscribe((params:Params)=>{
           this.currentTicker = params['ticker'];
-          this.getStockDataOnTicker(this.currentTicker);
+          this.timeSeries = params['timeSeries'];
+          this.getStockDataOnTicker(this.currentTicker,this.timeSeries);
           this.drawChart();
         });
     }
 
-    getStockDataOnTicker(ticker:string){
-        this.stockAnalyzerService.getDataForTicker(ticker).subscribe(responseData => {
+    getStockDataOnTicker(ticker:string, timeSeries:string){
+        this.stockAnalyzerService.getDataForTicker(ticker,timeSeries).subscribe(responseData => {
             console.log("Response : ",responseData);
         },error =>{
             console.log("Error Message : ",error.Message);
