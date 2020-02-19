@@ -43,8 +43,7 @@ export class StockInfo implements OnInit{
               datasets: [{
                 data: [12, 19, 3, 5, 2, 3],
                 fill: false,
-                backgroundColor: [],
-                borderColor: []
+                borderColor: "#bae755"
             }]
         },
         options: {
