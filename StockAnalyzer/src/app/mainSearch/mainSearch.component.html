@@ -4,7 +4,7 @@
             <div class="input-group col-md-12">
                 <input type="text" class="form-control border-curve removeRightBorderSettingsFromBootstrap" name="ticker" required maxlength="6" ngModel placeholder="Ticker Here">
                 <div class="form-group leftSpacing">
-                    <select class="form-control" ngModel name="timeSeries">
+                    <select class="form-control" ngModel name="timeSeries" required>
                       <option value='TIME_SERIES_INTRADAY_1' >1 Day</option>
                       <option value='TIME_SERIES_INTRADAY_5'>5 Day</option>
                       <option value='TIME_SERIES_DAILY_1'>1 Month</option>

@@ -4,7 +4,12 @@
     <hr>
     <div class="row stock-graph-size">
         <div class="col-md-12" style="display: block">
-            <canvas id="canvas">{{ chart }}</canvas>
+            <div *ngIf="isLoading; else chartReference" class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <ng-template #chartReference>
+                <canvas id="canvas" >{{ chart }}</canvas>
+            </ng-template>
         </div>
     </div>
     <hr>
