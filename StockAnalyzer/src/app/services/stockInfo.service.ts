@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators'
 
 @Injectable()
 export class StockInfoService{
@@ -20,11 +21,7 @@ export class StockInfoService{
             searchParams = searchParams.append('function',this.getTimeSeries(timeSeries));
         }
         searchParams = searchParams.append('apikey','DT7RMJ21B9IBYS9B');
-        return this.http.get('https://www.alphavantage.co/query',
-        {
-            observe:'body',
-            params: searchParams
-        });
+         return this.http.get('https://www.alphavantage.co/query',{observe:'body',params: searchParams}).pipe(map( data => {return data[this.returnedTimeSeries]}));
     }
 
     getTimeSeries(timeSeries:string){

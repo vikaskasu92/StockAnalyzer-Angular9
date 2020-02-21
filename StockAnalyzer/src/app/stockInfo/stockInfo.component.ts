@@ -15,7 +15,7 @@ export class StockInfo implements OnInit{
     tikerCloseData = [];
 
     constructor(private router:ActivatedRoute, 
-        private stockAnalyzerService:StockInfoService,
+        private stockInfoService:StockInfoService,
         private chartService:ChartService
     ){}
     
@@ -28,15 +28,15 @@ export class StockInfo implements OnInit{
     }
 
     getStockDataOnTicker(ticker:string, timeSeries:string){
-        this.stockAnalyzerService.getDataForTicker(ticker,timeSeries).subscribe(responseData => {
-            const data = responseData[this.stockAnalyzerService.returnedTimeSeries];
-            let fromDate = this.stockAnalyzerService.fromDate;
-            for (let key in data){
-                let currentDate = this.stockAnalyzerService.getCurrentSplitDate(key);
+        this.stockInfoService.getDataForTicker(ticker,timeSeries).subscribe(responseData => {
+            console.log(responseData);
+            let fromDate = this.stockInfoService.fromDate;
+            for (let key in responseData){
+                let currentDate = this.stockInfoService.getCurrentSplitDate(key);
                 if(currentDate[0] === fromDate[0] && currentDate[1] == fromDate[1] && currentDate[2] < fromDate[2]){
                     break;
                 }
-                this.tikerCloseData.unshift(data[key]["4. close"]);
+                this.tikerCloseData.unshift(responseData[key]["4. close"]);
             }
             this.chartService.drawChart(this.tikerCloseData,this.chartService.getColorOfLine(this.tikerCloseData));
         },error =>{
