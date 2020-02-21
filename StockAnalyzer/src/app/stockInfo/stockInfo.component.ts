@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params} from '@angular/router';
-import { StockAnalyzerService } from '../services/stockAnalyzer.service';
-import { HttpClient } from '@angular/common/http';
+import { StockInfoService } from '../services/stockInfo.service';
 import { ChartService } from '../services/chart.service';
 
 @Component({
     templateUrl:"./stockInfo.component.html",
     styleUrls:["./stockInfo.component.css"],
-    providers:[StockAnalyzerService]
+    providers:[StockInfoService]
 })
 export class StockInfo implements OnInit{
     
@@ -16,8 +15,7 @@ export class StockInfo implements OnInit{
     tikerCloseData = [];
 
     constructor(private router:ActivatedRoute, 
-        private stockAnalyzerService:StockAnalyzerService,
-        private http:HttpClient, 
+        private stockAnalyzerService:StockInfoService,
         private chartService:ChartService
     ){}
     

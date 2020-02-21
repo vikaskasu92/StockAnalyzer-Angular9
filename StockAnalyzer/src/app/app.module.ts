@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { MainSearch } from './mainSearch/mainSearch.component';
 import { StockInfo } from './stockInfo/stockInfo.component';
 import { Header } from './header/header.component';
-import { StockAnalyzerService } from './services/stockAnalyzer.service';
+import { StockInfoService } from './services/stockInfo.service';
 import { StockNews } from './stockInfo/stockNews/stockNews.component';
 import { RecentStocks } from './stockExchange/recentStocks/recentStock.component';
 import { StockExchange } from './stockExchange/stockExchange.component';
@@ -41,7 +41,7 @@ import { DropDownToggle } from './directives/dropDownToggle.directive';
     ChartsModule,
     HttpClientModule
   ],
-  providers: [StockAnalyzerService],
+  providers: [StockInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

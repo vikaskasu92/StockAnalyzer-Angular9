@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class StockAnalyzerService{
+export class StockInfoService{
 
     constructor(private http:HttpClient){}
     isTimeSeriesNotIntraday:boolean = false;
