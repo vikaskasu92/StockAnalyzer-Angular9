@@ -5,8 +5,7 @@ import { ChartService } from '../services/chart.service';
 
 @Component({
     templateUrl:"./stockInfo.component.html",
-    styleUrls:["./stockInfo.component.css"],
-    providers:[StockInfoService]
+    styleUrls:["./stockInfo.component.css"]
 })
 export class StockInfo implements OnInit{
     
@@ -29,7 +28,6 @@ export class StockInfo implements OnInit{
 
     getStockDataOnTicker(ticker:string, timeSeries:string){
         this.stockInfoService.getDataForTicker(ticker,timeSeries).subscribe(responseData => {
-            console.log(responseData);
             let fromDate = this.stockInfoService.fromDate;
             for (let key in responseData){
                 let currentDate = this.stockInfoService.getCurrentSplitDate(key);
@@ -39,11 +37,8 @@ export class StockInfo implements OnInit{
                 this.tikerCloseData.unshift(responseData[key]["4. close"]);
             }
             this.chartService.drawChart(this.tikerCloseData,this.chartService.getColorOfLine(this.tikerCloseData));
-        },error =>{
+        },error => {
             console.log("Error Message : ",error.Message);
         });;
-    }
-
-    
-    
+    } 
 }
