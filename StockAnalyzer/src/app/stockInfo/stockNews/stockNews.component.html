@@ -1,1 +1,11 @@
-<h3>Hi From Stock News!</h3>
+<div *ngFor="let article of newsArticlesArray; let i=index">
+    <span>Length : {{ i }} </span>
+   <span>Source : {{ article.source }}</span> 
+   <span>Author : {{ article.author }}</span> 
+   <span>Title : {{ article.title }}</span> 
+   <span>Description : {{ article.description }}</span> 
+   <span>URL : {{ article.url }}</span> 
+   <span>Image URL : {{ article.urlToImage }}</span> 
+   <span>Published At : {{ article.publishedAt }}</span> 
+   <span>Content : {{ article.content }}</span> 
+</div>
