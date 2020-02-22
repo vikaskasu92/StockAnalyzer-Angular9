@@ -1,11 +1,18 @@
-<div *ngFor="let article of newsArticlesArray; let i=index">
-    <span>Length : {{ i }} </span>
-   <span>Source : {{ article.source }}</span> 
-   <span>Author : {{ article.author }}</span> 
-   <span>Title : {{ article.title }}</span> 
-   <span>Description : {{ article.description }}</span> 
-   <span>URL : {{ article.url }}</span> 
-   <span>Image URL : {{ article.urlToImage }}</span> 
-   <span>Published At : {{ article.publishedAt }}</span> 
-   <span>Content : {{ article.content }}</span> 
+<h3 class="headingBottomSpace">Stock News related to {{ ticker | uppercase }}</h3>
+<div *ngIf="isLoading; else newsReference" class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
 </div>
+<ng-template #newsReference>
+    <div *ngFor="let article of newsArticlesArray; let i=index">
+        <ul class="list-group">
+            <li class="list-group-item bottomSpace">
+                <span class="newsHeading justify-content-start">{{ article.title }}</span> <br>
+                <span>{{ article.description }}</span> <br><br>
+                <img src='{{ article.urlToImage }}' class="rounded pictureSizeWidth pictureSizeHeight" alt="newsImage"><br><br>
+                <span>{{ article.content }}</span> <br><br>
+                <span>{{ article.author }} from {{ article.source.name }} <a role="button" (click)='moreInfo(article.url)' class="float-right linkDecoration">View More...</a></span> <br>
+                <span>{{ article.publishedAt | date }}</span> <br>
+            </li>
+        </ul>
+    </div>
+</ng-template>

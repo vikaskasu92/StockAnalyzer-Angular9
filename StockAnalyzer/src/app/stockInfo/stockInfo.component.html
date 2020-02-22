@@ -1,7 +1,9 @@
+<div class="tickerHeading">
+    <span>{{ currentTicker | uppercase }}</span><br><br>
+    <span>hello 1 {{ finalTickerPrice | twoDecimals }}</span> <br>
+    <span>hello 2 {{ priceChange | twoDecimals }}</span>
+</div>
 <span>
-    <p>The Ticker to be searched is " {{ currentTicker | uppercase }} "</p>
-    <hr>
-    <hr>
     <div class="row stock-graph-size">
         <div class="col-md-12" style="display: block">
             <div *ngIf="isLoading; else chartReference" class="spinner-border" role="status">
@@ -9,6 +11,15 @@
             </div>
             <ng-template #chartReference>
                 <canvas id="canvas" >{{ chart }}</canvas>
+                <div class="btn-group float-right buttonGroupSpacing" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary">1D</button>
+                    <button type="button" class="btn btn-secondary">5D</button>
+                    <button type="button" class="btn btn-secondary">1M</button>
+                    <button type="button" class="btn btn-secondary">3M</button>
+                    <button type="button" class="btn btn-secondary">6M</button>
+                    <button type="button" class="btn btn-secondary">1Y</button>
+                    <button type="button" class="btn btn-secondary">5Y</button>
+                  </div>
             </ng-template>
         </div>
     </div>

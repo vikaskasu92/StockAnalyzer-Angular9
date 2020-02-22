@@ -2,3 +2,12 @@
     max-height: 500px;
     min-width: 300px;
 }
+
+.buttonGroupSpacing{
+    margin-top: 5px;
+}
+
+.tickerHeading{
+    font-weight: bold !important;
+    margin-bottom: 30px;
+}

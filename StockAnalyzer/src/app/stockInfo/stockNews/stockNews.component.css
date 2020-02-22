@@ -1,0 +1,25 @@
+.newsHeading{
+    font-weight: bold !important;
+}
+
+.pictureSizeHeight{
+    max-height: 200px !important;
+}
+
+.pictureSizeWidth{
+    width:100%;
+}
+
+.linkDecoration{
+    text-decoration: underline;
+    color: blue;
+    cursor: grab;
+}
+
+.bottomSpace{
+    margin-bottom: 10px;
+}
+
+.headingBottomSpace{
+    margin-bottom: 20px;
+}

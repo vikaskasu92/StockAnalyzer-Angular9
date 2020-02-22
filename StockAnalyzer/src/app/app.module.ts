@@ -19,6 +19,7 @@ import { StockExchange } from './stockExchange/stockExchange.component';
 import { Error } from './error/error.component'
 import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
 import { DropDownToggle } from './directives/dropDownToggle.directive';
+import { TwoDecimals } from './pipes/twoDecimals.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DropDownToggle } from './directives/dropDownToggle.directive';
     StockExchange,
     Error,
     InvalidTicker,
-    DropDownToggle   
+    DropDownToggle,
+    TwoDecimals
 
   ],
   imports: [
