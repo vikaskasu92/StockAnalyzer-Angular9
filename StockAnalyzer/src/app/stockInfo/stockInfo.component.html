@@ -1,5 +1,5 @@
 <div class="tickerHeading">
-    <span>{{ currentTicker | uppercase }} - {{ fullCompanyName }}  - </span>
+    <span>{{ currentTicker | uppercase }} - {{ fullCompanyName }}</span> <br>
     <span *ngIf="green; else redRef">    
         <span class="greenColor">{{ finalTickerPrice | twoDecimals | currency:USD }} </span> 
         <span class="greenColor">( {{ priceChange | twoDecimals }} %) </span>
