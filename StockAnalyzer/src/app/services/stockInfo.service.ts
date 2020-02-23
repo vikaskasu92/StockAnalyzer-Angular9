@@ -1,22 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'
-
-interface BestSearch{
-    bestMatches: [
-        {
-            '1. symbol':string,
-            '2. name':string,
-            '3. type':string,
-            '4. region':string,
-            '5. marketOpen':string,
-            '6. marketClose':string,
-            '7. timezone':string,
-            '8. currency':string,
-            '9. matchScore':string
-        }
-    ]
-}
+import { BestSearch } from '../model/bestSearch.model'
 
 @Injectable()
 export class StockInfoService{
