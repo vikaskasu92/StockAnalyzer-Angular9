@@ -8,8 +8,8 @@
             <li class="list-group-item bottomSpace">
                 <span class="newsHeading justify-content-start">{{ article.title }}</span> <br>
                 <span>{{ article.description }}</span> <br><br>
-                <img src='{{ article.urlToImage }}' class="rounded pictureSizeWidth pictureSizeHeight" alt="newsImage"><br><br>
-                <span>{{ article.content }}</span> <br><br>
+                <span><img src='{{ article.urlToImage }}' class="rounded pictureSizeWidth pictureSizeHeight" alt="newsImage"></span><br><br>
+                <span>{{ article.content | replace }}</span> <br><br>
                 <span>{{ article.author }} from {{ article.source.name }} <a role="button" (click)='moreInfo(article.url)' class="float-right linkDecoration">View More...</a></span> <br>
                 <span>{{ article.publishedAt | date }}</span> <br>
             </li>

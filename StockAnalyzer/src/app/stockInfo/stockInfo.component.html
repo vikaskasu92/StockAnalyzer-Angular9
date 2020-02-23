@@ -1,7 +1,7 @@
 <div class="tickerHeading">
     <span>{{ currentTicker | uppercase }}</span><br><br>
-    <span>hello 1 {{ finalTickerPrice | twoDecimals }}</span> <br>
-    <span>hello 2 {{ priceChange | twoDecimals }}</span>
+    <span>{{ finalTickerPrice | twoDecimals }}</span>
+    <span>( {{ priceChange | twoDecimals }} %) </span>
 </div>
 <span>
     <div class="row stock-graph-size">

@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TwoDecimals implements PipeTransform{
 
-    transform(decimal:number):string{
-       return decimal.toFixed(2);
+
+    transform(value:number):string{
+       return value.toFixed(2);
     }
 
 }

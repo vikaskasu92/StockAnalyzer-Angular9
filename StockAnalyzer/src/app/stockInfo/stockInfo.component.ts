@@ -39,8 +39,8 @@ export class StockInfo implements OnInit{
                 }
                 this.tikerCloseData.unshift(responseData[key]["4. close"]);
             }
-            this.finalTickerPrice = this.tikerCloseData[this.tikerCloseData.length - 1];
-            let previousprice = this.tikerCloseData[this.tikerCloseData.length - 2];
+            this.finalTickerPrice = +this.tikerCloseData[this.tikerCloseData.length - 1];
+            let previousprice = +this.tikerCloseData[this.tikerCloseData.length - 2];
             this.priceChange = (this.finalTickerPrice - previousprice)/previousprice;
             this.isLoading = false;
             setTimeout( () => {

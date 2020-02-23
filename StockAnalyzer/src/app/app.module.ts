@@ -20,6 +20,7 @@ import { Error } from './error/error.component'
 import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
 import { DropDownToggle } from './directives/dropDownToggle.directive';
 import { TwoDecimals } from './pipes/twoDecimals.pipe';
+import { Replace } from './pipes/replace.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TwoDecimals } from './pipes/twoDecimals.pipe';
     Error,
     InvalidTicker,
     DropDownToggle,
-    TwoDecimals
+    TwoDecimals,
+    Replace
 
   ],
   imports: [
