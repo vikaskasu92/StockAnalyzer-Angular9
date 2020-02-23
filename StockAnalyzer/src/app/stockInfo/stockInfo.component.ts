@@ -15,6 +15,7 @@ export class StockInfo implements OnInit{
     isLoading:boolean = true;
     finalTickerPrice:number;
     priceChange:number;
+    
 
     constructor(private router:ActivatedRoute, 
         private stockInfoService:StockInfoService,
@@ -41,7 +42,7 @@ export class StockInfo implements OnInit{
             }
             this.finalTickerPrice = +this.tikerCloseData[this.tikerCloseData.length - 1];
             let previousprice = +this.tikerCloseData[this.tikerCloseData.length - 2];
-            this.priceChange = (this.finalTickerPrice - previousprice)/previousprice;
+            this.priceChange = (previousprice - this.finalTickerPrice)/this.finalTickerPrice;
             this.isLoading = false;
             setTimeout( () => {
                 this.chartService.drawChart(this.tikerCloseData,this.chartService.getColorOfLine(this.tikerCloseData));

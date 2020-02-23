@@ -1,7 +1,12 @@
 <div class="tickerHeading">
     <span>{{ currentTicker | uppercase }}</span><br><br>
-    <span>{{ finalTickerPrice | twoDecimals }}</span>
-    <span>( {{ priceChange | twoDecimals }} %) </span>
+    <span >{{ finalTickerPrice | twoDecimals }} </span>
+    <span *ngIf="finalTickerPrice > 0; else redRef">     
+        <span class="greenColor">( {{ priceChange | twoDecimals }} %) </span>
+    </span>
+    <ng-template>
+        <span class="redColor">( {{ priceChange | twoDecimals }} %) </span>
+    </ng-template>
 </div>
 <span>
     <div class="row stock-graph-size">

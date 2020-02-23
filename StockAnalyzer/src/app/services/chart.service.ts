@@ -9,7 +9,7 @@ export class ChartService{
     getColorOfLine(tikerCloseData){
         let first = tikerCloseData[0];
         let last = tikerCloseData[tikerCloseData.length - 1];
-        let color = "#bae755"
+        let color = "#093"
         if(+first > +last){
              color = "#FF0000";
         }
