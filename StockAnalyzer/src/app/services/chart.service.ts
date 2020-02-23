@@ -23,7 +23,7 @@ export class ChartService{
                labels: dataInput,
                datasets: [{
                  data: dataInput,
-                 fill: false,
+                 fill: true,
                  borderColor: lineColor
              }]
          },
@@ -31,7 +31,12 @@ export class ChartService{
              scales: {
                  yAxes: [{
                      stacked: false
-                 }]
+                 }],
+                 xAxes: [{
+                    ticks: {
+                        display: false //this will remove only the label
+                    }
+                }]
              },
              legend: {
                  display: false
