@@ -2,6 +2,22 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'
 
+interface BestSearch{
+    bestMatches: [
+        {
+            '1. symbol':string,
+            '2. name':string,
+            '3. type':string,
+            '4. region':string,
+            '5. marketOpen':string,
+            '6. marketClose':string,
+            '7. timezone':string,
+            '8. currency':string,
+            '9. matchScore':string
+        }
+    ]
+}
+
 @Injectable()
 export class StockInfoService{
 
@@ -9,6 +25,7 @@ export class StockInfoService{
     isTimeSeriesNotIntraday:boolean = false;
     returnedTimeSeries:string = "";
     fromDate = [];
+    tickerName:BestSearch[] = [];
 
     getDataForTicker(ticker:string, timeSeries:string){
         this.getTimeSeries(timeSeries);
@@ -20,8 +37,11 @@ export class StockInfoService{
         }else{
             searchParams = searchParams.append('function',this.getTimeSeries(timeSeries));
         }
-        searchParams = searchParams.append('apikey','DT7RMJ21B9IBYS9B');
          return this.http.get('https://www.alphavantage.co/query',{observe:'body',params: searchParams}).pipe(map( data => {return data[this.returnedTimeSeries]}));
+    }
+
+    getSymbolName(ticker:string){
+        return this.http.get<BestSearch>("https://www.alphavantage.co/query",{observe:'body',params:{'function':'SYMBOL_SEARCH','keywords':ticker}}).pipe(map( responseData => { return responseData.bestMatches } ));
     }
 
     getTimeSeries(timeSeries:string){

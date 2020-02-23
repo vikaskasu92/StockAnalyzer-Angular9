@@ -16,6 +16,7 @@ export class StockInfo implements OnInit{
     finalTickerPrice:number;
     priceChange:number;
     green:boolean = true;
+    fullCompanyName:string;
 
 
     constructor(private router:ActivatedRoute, 
@@ -28,6 +29,7 @@ export class StockInfo implements OnInit{
           this.currentTicker = params['ticker'];
           this.timeSeries = params['timeSeries'];
           this.getStockDataOnTicker(this.currentTicker,this.timeSeries);
+          this.getTickerFullName(this.currentTicker);
         });
     }
 
@@ -41,7 +43,7 @@ export class StockInfo implements OnInit{
                 }
                 this.tikerCloseData.unshift(responseData[key]["4. close"]);
             }
-            this.setTickerPriceData();
+            this._setTickerPriceData();
             this.isLoading = false;
             setTimeout( () => {
                 this.chartService.drawChart(this.tikerCloseData,this.chartService.getColorOfLine(this.tikerCloseData));
@@ -50,13 +52,19 @@ export class StockInfo implements OnInit{
         });
     }
 
-    setTickerPriceData(){
-        this.finalTickerPrice = +this.tikerCloseData[this.tikerCloseData.length - 1];
-        let previousprice = +this.tikerCloseData[0];
-         this.calculatePriceChange(previousprice);
+    getTickerFullName(ticker:string){
+        this.stockInfoService.getSymbolName(ticker).subscribe( responseBody => { 
+            this.fullCompanyName = responseBody[0]['2. name'];
+        });
     }
 
-    calculatePriceChange(previousprice:number){
+    _setTickerPriceData(){
+        this.finalTickerPrice = +this.tikerCloseData[this.tikerCloseData.length - 1];
+        let previousprice = +this.tikerCloseData[0];
+         this._calculatePriceChange(previousprice);
+    }
+
+    _calculatePriceChange(previousprice:number){
         this.priceChange = ((+this.finalTickerPrice - previousprice)/previousprice)*100;
             if(this.priceChange < 0){
                 this.green = !this.green;

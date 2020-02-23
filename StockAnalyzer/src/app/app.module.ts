@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppRoutingModule } from './approuting.module'
 
@@ -21,6 +21,7 @@ import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
 import { DropDownToggle } from './directives/dropDownToggle.directive';
 import { TwoDecimals } from './pipes/twoDecimals.pipe';
 import { Replace } from './pipes/replace.pipe';
+import { Intercept } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,13 @@ import { Replace } from './pipes/replace.pipe';
     ChartsModule,
     HttpClientModule
   ],
-  providers: [StockInfoService],
+  providers: [StockInfoService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:Intercept,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
