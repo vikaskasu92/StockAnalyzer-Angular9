@@ -15,7 +15,8 @@ export class StockInfo implements OnInit{
     isLoading:boolean = true;
     finalTickerPrice:number;
     priceChange:number;
-    
+    green:boolean = true;
+
 
     constructor(private router:ActivatedRoute, 
         private stockInfoService:StockInfoService,
@@ -40,15 +41,25 @@ export class StockInfo implements OnInit{
                 }
                 this.tikerCloseData.unshift(responseData[key]["4. close"]);
             }
-            this.finalTickerPrice = +this.tikerCloseData[this.tikerCloseData.length - 1];
-            let previousprice = +this.tikerCloseData[this.tikerCloseData.length - 2];
-            this.priceChange = (previousprice - this.finalTickerPrice)/this.finalTickerPrice;
+            this.setTickerPriceData();
             this.isLoading = false;
             setTimeout( () => {
                 this.chartService.drawChart(this.tikerCloseData,this.chartService.getColorOfLine(this.tikerCloseData));
-            },0)
-               },error => {
+            },0)},error => {
             console.log("Error Message : ",error.Message);
-        });;
+        });
+    }
+
+    setTickerPriceData(){
+        this.finalTickerPrice = +this.tikerCloseData[this.tikerCloseData.length - 1];
+        let previousprice = +this.tikerCloseData[0];
+         this.calculatePriceChange(previousprice);
+    }
+
+    calculatePriceChange(previousprice:number){
+        this.priceChange = ((+this.finalTickerPrice - previousprice)/previousprice)*100;
+            if(this.priceChange < 0){
+                this.green = !this.green;
+            }
     }
 }
