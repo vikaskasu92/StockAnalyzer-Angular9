@@ -3,10 +3,9 @@ import { Chart } from 'chart.js';
 
 @Injectable({providedIn:'root'})
 export class ChartService{
-
     chart:any;
 
-    getColorOfLine(tikerCloseData){
+    getColorOfLine(tikerCloseData:any){
         let first = tikerCloseData[0];
         let last = tikerCloseData[tikerCloseData.length - 1];
         let color = "#093"
@@ -16,7 +15,7 @@ export class ChartService{
         return color;
      }
  
-     drawChart(dataInput, lineColor){
+     drawChart(dataInput:any, lineColor:any){
          this.chart = new Chart('canvas', {
              type: 'line',
              data: {

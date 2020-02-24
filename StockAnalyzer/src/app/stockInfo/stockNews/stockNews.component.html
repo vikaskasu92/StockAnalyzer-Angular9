@@ -1,4 +1,5 @@
 <h3 class="headingBottomSpace">Stock News related to {{ ticker | uppercase }}</h3>
+<P>Powered by newsapi.org</P>
 <div *ngIf="isLoading; else newsReference" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
 </div>
@@ -9,7 +10,7 @@
                 <span class="newsHeading justify-content-start">{{ article.title }}</span> <br>
                 <span>{{ article.description }}</span> <br><br>
                 <span><img src='{{ article.urlToImage }}' class="rounded pictureSizeWidth pictureSizeHeight" alt="newsImage"></span><br><br>
-                <span>{{ article.content  }}</span> <br><br>
+                <span>{{ article.content | trimParagraph:250 }}</span> <br><br>
                 <span>{{ article.author }} from {{ article.source.name }} <a role="button" (click)='moreInfo(article.url)' class="float-right linkDecoration">View More...</a></span> <br>
                 <span>{{ article.publishedAt | date }}</span> <br>
             </li>

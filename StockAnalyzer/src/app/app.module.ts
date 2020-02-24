@@ -20,6 +20,7 @@ import { Error } from './shared/error/error.component'
 import { InvalidTicker } from './shared/error/Invalid Ticker/invalidTicker.component';
 import { DropDownToggle } from './shared/directives/dropDownToggle.directive';
 import { TwoDecimals } from './shared/pipes/twoDecimals.pipe';
+import { TrimParagraph } from './shared/pipes/trimParagraph.pipe';
 import { Intercept } from './services/interceptor.service';
 
 @NgModule({
@@ -34,7 +35,8 @@ import { Intercept } from './services/interceptor.service';
     Error,
     InvalidTicker,
     DropDownToggle,
-    TwoDecimals
+    TwoDecimals,
+    TrimParagraph
   ],
   imports: [
     BrowserModule,

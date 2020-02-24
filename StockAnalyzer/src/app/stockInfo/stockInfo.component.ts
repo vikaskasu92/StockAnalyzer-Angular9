@@ -59,6 +59,7 @@ export class StockInfo implements OnInit{
     }
 
     fetchStock(timeSeries:string){
+        this.isLoading = true;
         this.getStockDataOnTicker(this.currentTicker,timeSeries);
     }
 

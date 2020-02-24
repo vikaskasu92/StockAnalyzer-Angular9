@@ -19,3 +19,8 @@
 .redColor{
     color:#FF0000;
 }
+
+.stockChartDisplay{
+    min-height: 180px;
+    max-height: 180px;
+}
