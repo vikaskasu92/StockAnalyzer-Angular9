@@ -12,15 +12,15 @@ import { AppComponent } from './app.component';
 import { MainSearch } from './mainSearch/mainSearch.component';
 import { StockInfo } from './stockInfo/stockInfo.component';
 import { Header } from './header/header.component';
-import { StockInfoService } from './services/stockInfo.service';
+import { StockInfoService } from './stockInfo/stockInfo.service';
 import { StockNews } from './stockInfo/stockNews/stockNews.component';
 import { RecentStocks } from './stockExchange/recentStocks/recentStock.component';
 import { StockExchange } from './stockExchange/stockExchange.component';
-import { Error } from './error/error.component'
-import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
-import { DropDownToggle } from './directives/dropDownToggle.directive';
-import { TwoDecimals } from './pipes/twoDecimals.pipe';
-import { Replace } from './pipes/replace.pipe';
+import { Error } from './shared/error/error.component'
+import { InvalidTicker } from './shared/error/Invalid Ticker/invalidTicker.component';
+import { DropDownToggle } from './shared/directives/dropDownToggle.directive';
+import { TwoDecimals } from './shared/pipes/twoDecimals.pipe';
+import { Replace } from './shared/pipes/replace.pipe';
 import { Intercept } from './services/interceptor.service';
 
 @NgModule({

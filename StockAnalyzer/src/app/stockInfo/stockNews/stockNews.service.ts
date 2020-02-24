@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { StockNewsModel } from '../model/stockNews.model';
+import { StockNewsModel } from './stockNews.model';
 
 @Injectable({providedIn:'root'})
 export class StockNewsService{

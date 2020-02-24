@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params} from '@angular/router';
-import { StockInfoService } from '../services/stockInfo.service';
+import { StockInfoService } from './stockInfo.service';
 import { ChartService } from '../services/chart.service';
 
 @Component({

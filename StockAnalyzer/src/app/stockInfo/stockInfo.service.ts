@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'
-import { BestSearch } from '../model/bestSearch.model'
+import { BestSearch } from './bestSearch.model'
 
 @Injectable()
 export class StockInfoService{

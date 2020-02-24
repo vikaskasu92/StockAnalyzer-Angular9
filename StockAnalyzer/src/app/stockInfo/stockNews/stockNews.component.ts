@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { StockNewsService } from '../../services/stockNews.service';
-import { StockNewsModel } from 'src/app/model/stockNews.model';
+import { StockNewsService } from './stockNews.service';
 
 @Component({
     selector:'app-stockNews',

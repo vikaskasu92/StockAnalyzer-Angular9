@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { MainSearch } from './mainSearch/mainSearch.component';
 import { StockInfo } from './stockInfo/stockInfo.component';
-import { Error } from './error/error.component'
-import { InvalidTicker } from './error/Invalid Ticker/invalidTicker.component';
+import { Error } from './shared/error/error.component'
+import { InvalidTicker } from './shared/error/Invalid Ticker/invalidTicker.component';
 
 
 const appRoutes:Routes = [
