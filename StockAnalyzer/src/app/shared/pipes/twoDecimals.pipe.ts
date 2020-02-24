@@ -4,8 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name:'twoDecimals'
 })
 export class TwoDecimals implements PipeTransform{
-
-
+    
     transform(value:number):string{
        return value.toFixed(2);
     }

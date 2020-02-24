@@ -1,11 +1,11 @@
-<div class="tickerHeading">
+<div *ngIf="!isLoading" class="tickerHeading">
     <span>{{ currentTicker | uppercase }} - {{ fullCompanyName }}</span> <br>
     <span *ngIf="green; else redRef">    
         <span class="greenColor">{{ finalTickerPrice | twoDecimals | currency:USD }} </span> 
-        <span class="greenColor">( {{ priceChange | twoDecimals }} %) </span>
+        <span class="greenColor">( {{ priceChange |  twoDecimals }} %) </span>
     </span>
     <ng-template #redRef>
-        <span class="redColor">{{ finalTickerPrice | twoDecimals | currency:USD }} </span>
+        <span class="redColor">{{ finalTickerPrice | twoDecimals | currency:USD}} </span>
         <span class="redColor">( {{ priceChange | twoDecimals }} %) </span>
     </ng-template>
 </div>
