@@ -27,7 +27,7 @@ export class StockInfo implements OnInit{
     ngOnInit(){
         this.router.queryParams.subscribe((params:Params)=>{
           this.currentTicker = params['ticker'];
-          this.timeSeries = params['timeSeries'];
+          //this.timeSeries = params['timeSeries'];
           this.getStockDataOnTicker(this.currentTicker,this.timeSeries);
           this.getTickerFullName(this.currentTicker);
         });

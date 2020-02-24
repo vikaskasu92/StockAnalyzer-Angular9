@@ -19,6 +19,8 @@ export class StockInfoService{
         if(this.isTimeSeriesNotIntraday){
             searchParams = searchParams.append('interval',this.getTimeSeries(timeSeries));
             searchParams = searchParams.append('function','TIME_SERIES_INTRADAY');
+        }else if(timeSeries === undefined || timeSeries === ""){
+            searchParams = searchParams.append('function',this.getTimeSeries('TIME_SERIES_DAILY_1'));
         }else{
             searchParams = searchParams.append('function',this.getTimeSeries(timeSeries));
         }

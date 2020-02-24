@@ -18,7 +18,7 @@ export class MainSearch implements OnInit{
      }
 
      onSubmit(){ 
-       this.router.navigate(['/stockInfo'],{queryParams:{'ticker':this.searchForm.controls['ticker'].value,'timeSeries':this.searchForm.controls['timeSeries'].value,'stockInfoPageShown':this.stockInfoPageShown}});
+       this.router.navigate(['/stockInfo'],{queryParams:{'ticker':this.searchForm.controls['ticker'].value,'stockInfoPageShown':this.stockInfoPageShown}});
     }
 
 }
