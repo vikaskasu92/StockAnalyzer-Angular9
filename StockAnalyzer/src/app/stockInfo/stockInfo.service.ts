@@ -13,14 +13,11 @@ export class StockInfoService{
     tickerName:BestSearch[] = [];
 
     getDataForTicker(ticker:string, timeSeries:string){
-        this.getTimeSeries(timeSeries);
         let searchParams = new HttpParams();
         searchParams = searchParams.append('symbol',ticker);
         if(this.isTimeSeriesNotIntraday){
             searchParams = searchParams.append('interval',this.getTimeSeries(timeSeries));
             searchParams = searchParams.append('function','TIME_SERIES_INTRADAY');
-        }else if(timeSeries === undefined || timeSeries === ""){
-            searchParams = searchParams.append('function',this.getTimeSeries('TIME_SERIES_DAILY_1'));
         }else{
             searchParams = searchParams.append('function',this.getTimeSeries(timeSeries));
         }
@@ -32,44 +29,52 @@ export class StockInfoService{
     }
 
     getTimeSeries(timeSeries:string){
-        if(timeSeries === 'TIME_SERIES_INTRADAY_1'){
-            this.returnedTimeSeries = "Time Series (1min)";
-            this.isTimeSeriesNotIntraday = true;
-            return '1min';
-        }else if(timeSeries === 'TIME_SERIES_INTRADAY_5'){
-            this.returnedTimeSeries = "Time Series (5min)";
-            this.isTimeSeriesNotIntraday = true;
-            return '5min'
-        }else if(timeSeries === 'TIME_SERIES_DAILY_1'){
-            this.returnedTimeSeries = "Time Series (Daily)";
-            this.isTimeSeriesNotIntraday = false;
-            this.getFromMonth(1);
-            return 'TIME_SERIES_DAILY'
-        }else if(timeSeries === 'TIME_SERIES_DAILY_3'){
-            this.returnedTimeSeries = "Time Series (Daily)";
-            this.isTimeSeriesNotIntraday = false;
-            this.getFromMonth(3);
-            return 'TIME_SERIES_DAILY'
-        }else if(timeSeries === 'TIME_SERIES_DAILY_5'){
-            this.returnedTimeSeries = "Time Series (Daily)";
-            this.isTimeSeriesNotIntraday = false;
-            this.getFromMonth(5);
-            return 'TIME_SERIES_DAILY'
-        }else if(timeSeries === 'TIME_SERIES_DAILY_12'){
-            this.returnedTimeSeries = "Weekly Time Series";
-            this.isTimeSeriesNotIntraday = false;
-            this.getFromMonth(12);
-            return 'TIME_SERIES_WEEKLY'
-        }else if(timeSeries === 'TIME_SERIES_DAILY_60'){
-            this.returnedTimeSeries = "Weekly Time Series";
-            this.isTimeSeriesNotIntraday = false;
-            this.getFromMonth(60);
-            return 'TIME_SERIES_WEEKLY'     
+        switch(timeSeries){
+            case '1D':{
+                this.returnedTimeSeries = "Time Series (1min)";
+                this.isTimeSeriesNotIntraday = true;
+                return '1min';
+            }
+            case '5D':{
+                this.returnedTimeSeries = "Time Series (5min)";
+                this.isTimeSeriesNotIntraday = true;
+                return '5min'
+            }
+            case '3M':{
+                this.returnedTimeSeries = "Time Series (Daily)";
+                this.isTimeSeriesNotIntraday = false;
+                this.getFromMonth(3);
+                return 'TIME_SERIES_DAILY'
+            }
+            case '6M':{
+                this.returnedTimeSeries = "Time Series (Daily)";
+                this.isTimeSeriesNotIntraday = false;
+                this.getFromMonth(6);
+                return 'TIME_SERIES_DAILY'
+            }
+            case '12M':{
+                this.returnedTimeSeries = "Weekly Time Series";
+                this.isTimeSeriesNotIntraday = false;
+                this.getFromMonth(12);
+                return 'TIME_SERIES_WEEKLY'
+            }
+            case '60M':{
+                this.returnedTimeSeries = "Weekly Time Series";
+                this.isTimeSeriesNotIntraday = false;
+                this.getFromMonth(60);
+                return 'TIME_SERIES_WEEKLY'     
+            }
+            default:{
+                this.returnedTimeSeries = "Time Series (Daily)";
+                this.isTimeSeriesNotIntraday = false;
+                this.getFromMonth(1);
+                return 'TIME_SERIES_DAILY'
+            }
         }
-
     }
 
     getFromMonth(reduceBy:number){
+        this.fromDate = [];
         let date = new Date();
         date.setMonth(date.getMonth() - reduceBy);
         let splitDate = this.splitIt(date);

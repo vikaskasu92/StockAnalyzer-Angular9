@@ -27,8 +27,7 @@ export class StockInfo implements OnInit{
     ngOnInit(){
         this.router.queryParams.subscribe((params:Params)=>{
           this.currentTicker = params['ticker'];
-          //this.timeSeries = params['timeSeries'];
-          this.getStockDataOnTicker(this.currentTicker,this.timeSeries);
+          this.getStockDataOnTicker(this.currentTicker,undefined);
           this.getTickerFullName(this.currentTicker);
         });
     }
@@ -36,6 +35,7 @@ export class StockInfo implements OnInit{
     getStockDataOnTicker(ticker:string, timeSeries:string){
         this.stockInfoService.getDataForTicker(ticker,timeSeries).subscribe(responseData => {
             let fromDate = this.stockInfoService.fromDate;
+            this.tikerCloseData = [];
             for (let key in responseData){
                 let currentDate = this.stockInfoService.getCurrentSplitDate(key);
                 if(currentDate[0] === fromDate[0] && currentDate[1] === fromDate[1] && currentDate[2] < fromDate[2]){
@@ -56,6 +56,10 @@ export class StockInfo implements OnInit{
         this.stockInfoService.getSymbolName(ticker).subscribe( responseBody => { 
             this.fullCompanyName = responseBody[0]['2. name'];
         });
+    }
+
+    fetchStock(timeSeries:string){
+        this.getStockDataOnTicker(this.currentTicker,timeSeries);
     }
 
     _setTickerPriceData(){
