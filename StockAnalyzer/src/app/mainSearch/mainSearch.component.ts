@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core'
 import { NgForm } from '@angular/forms'
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({ 
     selector:'app-mainSearch',
@@ -11,14 +11,17 @@ export class MainSearch implements OnInit{
 
      @ViewChild('searchForm',{static:true}) searchForm:NgForm;
      stockInfoPageShown:boolean = true;
+     addErrorClass:boolean = false;
 
-     constructor(private route:ActivatedRoute, private router:Router){ }
+     constructor(private router:Router){ }
 
      ngOnInit(){
      }
 
      onSubmit(){ 
-       this.router.navigate(['/stockInfo'],{queryParams:{'ticker':this.searchForm.controls['ticker'].value,'stockInfoPageShown':this.stockInfoPageShown}});
+        if(this.searchForm.valid){
+            this.router.navigate(['/stockInfo'],{queryParams:{'ticker':this.searchForm.controls['ticker'].value,'stockInfoPageShown':this.stockInfoPageShown}});
+        }
     }
 
 }
