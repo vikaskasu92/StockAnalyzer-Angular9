@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  alphaVantageURL: 'https://www.alphavantage.co/query',
+  alphaVantageApiKey: 'DT7RMJ21B9IBYS9B',
+  newsApiURL: 'http://newsapi.org/v2/everything',
+  newsApiURLApiKey:'85435614dd924fb59fa2e2660585decb'
 };
 
 /*

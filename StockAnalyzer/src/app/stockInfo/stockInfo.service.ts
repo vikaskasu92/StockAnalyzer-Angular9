@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'
 import { BestSearch } from './bestSearch.model'
+import { environment } from '../../environments/environment'
 
 @Injectable()
 export class StockInfoService{
@@ -21,11 +22,11 @@ export class StockInfoService{
         }else{
             searchParams = searchParams.append('function',this.getTimeSeries(timeSeries));
         }
-         return this.http.get('https://www.alphavantage.co/query',{observe:'body',params: searchParams}).pipe(map( data => {return data[this.returnedTimeSeries]}));
+         return this.http.get(environment.alphaVantageURL,{observe:'body',params: searchParams}).pipe(map( data => {return data[this.returnedTimeSeries]}));
     }
 
     getSymbolName(ticker:string){
-        return this.http.get<BestSearch>("https://www.alphavantage.co/query",{observe:'body',params:{'function':'SYMBOL_SEARCH','keywords':ticker}}).pipe(map( responseData => { return responseData.bestMatches } ));
+        return this.http.get<BestSearch>(environment.alphaVantageURL,{observe:'body',params:{'function':'SYMBOL_SEARCH','keywords':ticker}}).pipe(map( responseData => { return responseData.bestMatches } ));
     }
 
     getTimeSeries(timeSeries:string){
@@ -33,57 +34,67 @@ export class StockInfoService{
             case '1D':{
                 this.returnedTimeSeries = "Time Series (1min)";
                 this.isTimeSeriesNotIntraday = true;
+                this._getFromDate(1);
                 return '1min';
             }
             case '5D':{
                 this.returnedTimeSeries = "Time Series (5min)";
                 this.isTimeSeriesNotIntraday = true;
+                this._getFromDate(5);
                 return '5min'
             }
             case '3M':{
                 this.returnedTimeSeries = "Time Series (Daily)";
                 this.isTimeSeriesNotIntraday = false;
-                this.getFromMonth(3);
+                this._getFromMonth(3);
                 return 'TIME_SERIES_DAILY'
             }
             case '6M':{
                 this.returnedTimeSeries = "Time Series (Daily)";
                 this.isTimeSeriesNotIntraday = false;
-                this.getFromMonth(6);
+                this._getFromMonth(6);
                 return 'TIME_SERIES_DAILY'
             }
             case '12M':{
                 this.returnedTimeSeries = "Weekly Time Series";
                 this.isTimeSeriesNotIntraday = false;
-                this.getFromMonth(12);
+                this._getFromMonth(12);
                 return 'TIME_SERIES_WEEKLY'
             }
             case '60M':{
                 this.returnedTimeSeries = "Weekly Time Series";
                 this.isTimeSeriesNotIntraday = false;
-                this.getFromMonth(60);
+                this._getFromMonth(60);
                 return 'TIME_SERIES_WEEKLY'     
             }
             default:{
                 this.returnedTimeSeries = "Time Series (Daily)";
                 this.isTimeSeriesNotIntraday = false;
-                this.getFromMonth(1);
+                this._getFromMonth(1);
                 return 'TIME_SERIES_DAILY'
             }
         }
     }
 
-    getFromMonth(reduceBy:number){
-        this.fromDate = [];
+    getCurrentSplitDate(currentDate:string){
+        return currentDate.split("-");
+     }
+
+    _getFromMonth(reduceBy:number){
         let date = new Date();
         date.setMonth(date.getMonth() - reduceBy);
-        let splitDate = this.splitIt(date);
-        this.fromDate.push(splitDate[2]);
-        this.fromDate.push(this.getMonth(splitDate));
-        this.fromDate.push(splitDate[1]);
+        let splitDate = this._splitIt(date);
+        this._formTheDate(splitDate[2],this._getMonth(splitDate),splitDate[1]);
     }
 
-    getMonth(splitDate){
+    _getFromDate(reduceBy:number){
+        let date = new Date();
+        date.setDate(date.getDate()-reduceBy);
+        let splitDate = this._splitIt(date);
+        this._formTheDate(splitDate[2],splitDate[0],splitDate[1]);
+    }
+
+    _getMonth(splitDate){
         let beforeMonth = splitDate[0];
         if(beforeMonth.length === 1){
             beforeMonth = "0"+beforeMonth;
@@ -91,11 +102,14 @@ export class StockInfoService{
         return beforeMonth;
     }
 
-    splitIt(date:Date){
-       return date.toLocaleDateString().split("/");
+    _formTheDate(month,day,year){
+        this.fromDate = [];
+        this.fromDate.push(month);
+        this.fromDate.push(day);
+        this.fromDate.push(year);
     }
 
-    getCurrentSplitDate(currentDate:string){
-       return currentDate.split("-");
+    _splitIt(date:Date){
+       return date.toLocaleDateString().split("/");
     }
 }
